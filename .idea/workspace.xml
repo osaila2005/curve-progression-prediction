@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="52541f02-22c7-4beb-a202-f69503b795b7" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="27szbT3Pmw7VIMiSOI0IDehXYBi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="Settings.Markdown" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pawan\OneDrive - Drexel University\Desktop\Research 2019\Model_Deploy" />
+      <recent name="C:\Users\pawan\OneDrive - Drexel University\Desktop\Research 2019\Model_Deploy\templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.app">
+    <configuration name="FinalCobb_Progress" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Model_Deploy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FinalCobb_Progress.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Final_Cobb_Progress" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Model_Deploy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Final_Cobb_Progress.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Model_Deploy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python.Final_Cobb_Progress" />
+        <item itemvalue="Python.FinalCobb_Progress" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52541f02-22c7-4beb-a202-f69503b795b7" name="Default Changelist" comment="" />
+      <created>1650123652741</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650123652741</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="301" y="53" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1650130042662">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state x="301" y="53" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650130042662" />
+    <state width="1117" height="176" key="GridCell.Tab.0.bottom" timestamp="1650251479916">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.0.bottom/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479916" />
+    <state width="1117" height="176" key="GridCell.Tab.0.center" timestamp="1650251479916">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.0.center/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479916" />
+    <state width="1117" height="176" key="GridCell.Tab.0.left" timestamp="1650251479916">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.0.left/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479916" />
+    <state width="1117" height="176" key="GridCell.Tab.0.right" timestamp="1650251479916">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.0.right/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479916" />
+    <state width="1117" height="176" key="GridCell.Tab.1.bottom" timestamp="1650251479917">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.1.bottom/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479917" />
+    <state width="1117" height="176" key="GridCell.Tab.1.center" timestamp="1650251479917">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.1.center/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479917" />
+    <state width="1117" height="176" key="GridCell.Tab.1.left" timestamp="1650251479916">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.1.left/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479916" />
+    <state width="1117" height="176" key="GridCell.Tab.1.right" timestamp="1650251479917">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state width="1117" height="176" key="GridCell.Tab.1.right/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650251479917" />
+    <state x="79" y="0" key="SettingsEditor" timestamp="1650210444390">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state x="79" y="0" key="SettingsEditor/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650210444390" />
+    <state x="268" y="130" key="com.intellij.ide.util.TipDialog" timestamp="1650210195185">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state x="268" y="130" key="com.intellij.ide.util.TipDialog/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650210195185" />
+    <state x="232" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1650141502393">
+      <screen x="0" y="0" width="1138" height="610" />
+    </state>
+    <state x="232" y="-1" width="672" height="678" key="search.everywhere.popup/0.0.1138.610/2560.0.1138.640@0.0.1138.610" timestamp="1650141502393" />
+  </component>
+</project>

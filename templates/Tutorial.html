@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicition of Final Cobb Angle</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+
+
+
+<body>
+
+<div class="login">
+	<h1>Prediction of Final Cobb Angle</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+        Initial cobb angle
+        <input type="text" name="Cobb_Initial" required="required" />
+        <br>
+         Flexibility
+        <input type="text" name="Flexibility" required="required" />
+        <br>
+        Lordosis
+        <input type="text" name="L" required="required" />
+        <br>
+        Kyphosis
+        <input type="text" name="K" required="required" />
+        <br>
+        Age at last visit
+        <input type="text" name="Age_Las" required="required" />
+		<br>
+        Number of levels Involved
+        <input type="text" name="Num_Levels_Involved" required="required" />
+		<br>
+        Risser at first time point
+        <input type="text" name="Risser_First_TP" required="required" />
+        <br>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
