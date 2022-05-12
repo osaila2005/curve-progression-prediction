@@ -4,3 +4,4 @@ gunicorn
 xgboost
 sklearn
 numpy
+plotly
