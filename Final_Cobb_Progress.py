@@ -52,7 +52,7 @@ features['Gender'] = class_le.fit_transform(features['Gender'].values)
 # Remove the labels from the features
 # axis 1 refers to the columns
 features= features.drop('Cobb_Final', axis = 1)
-features= features.drop('Gender', axis = 1)
+#features= features.drop('Gender', axis = 1)
 features= features.drop('Brace', axis = 1)
 #features= features.drop('Risser_First_TP', axis = 1)
 #features= features.drop('Num_Levels_Involved', axis = 1)
@@ -62,7 +62,7 @@ features= features.drop('Vertebral Wedging', axis = 1)
 features= features.drop('Lenke', axis = 1)
 features= features.drop('Axial Rotation', axis = 1)
 #features= features.drop('Cobb_Initial', axis = 1)
-features= features.drop('Age_First', axis = 1)
+#features= features.drop('Age_First', axis = 1)
 #features= features.drop('K', axis = 1)
 #features= features.drop('Flexibility', axis = 1)
 features= features.drop('Time_Span', axis = 1)
@@ -82,17 +82,10 @@ features = np.array(features)
 print(feature_list)
 print(type(features))
 
-
-# In[4]:
-
-
 # Using Skicit-learn to split data into training and testing sets
 from sklearn.model_selection import train_test_split
 # Split the data into training and testing sets
 train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size = 0.25, random_state = 42)
-
-
-# In[5]:
 
 
 from sklearn.preprocessing import StandardScaler
@@ -101,26 +94,16 @@ sc = StandardScaler()
 #test_features = sc.transform(test_features)
 
 
-# In[6]:
-
-
 print('Training Features Shape:', train_features.shape)
 print('Training Labels Shape:', train_labels.shape)
 print('Testing Features Shape:', test_features.shape)
 print('Testing Labels Shape:', test_labels.shape)
 
 
-# In[13]:
-
-
 # Import the model we are using
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import cross_val_score, GridSearchCV
-# Instantiate model with 1000 decision trees
-#rf = RandomForestRegressor(n_estimators = 290
-                          # , random_state = 42, oob_score=True, max_features=5)
-#rf=RandomForestRegressor(bootstrap= True, max_depth= 26, max_features= 4, min_samples_leaf= 6, min_samples_split= 3,
-# n_estimators=392 , random_state = 42, oob_score=True)
+
 rf=RandomForestRegressor(bootstrap= True, max_depth= 30, max_features= 5, min_samples_leaf= 2, min_samples_split= 7,
  n_estimators=291 , random_state = 42, oob_score=True)
 
@@ -129,15 +112,11 @@ scores_training=cross_val_score(rf,train_features, train_labels,cv=10, scoring='
 print (scores_training)
 print (scores_training.mean())
 
-
-# In[14]:
-
-
 rf.fit(train_features, train_labels)
 
-# Make pickle file of my my model
+# Make pickle file of  my model
 pickle.dump(rf,open("Final_Cobb_Progress.pkl","wb"))
-# In[ ]:
+
 
 
 

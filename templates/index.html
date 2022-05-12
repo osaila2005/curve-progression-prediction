@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
 <meta charset="UTF-8">
+
+
 <body>
   <br />
   <table cellpadding="5" align="center">
   <tr>
     <td>
-      <img src="https://ausilah-test-1.s3.amazonaws.com/Drexel-logo.jpg" alt="Drexel Univeristy logo" width="100" height="100">
+      <img src="https://biomed.drexel.edu/labs/obl/images/Drexel-logo.jpg" alt="Drexel Univeristy logo" width="100" height="100">
     </td>
     <td>
     <p align="center">
@@ -18,7 +22,7 @@
     </p>
     </td>
       <td>
-          <img src="https://ausilah-test-1.s3.amazonaws.com/OBL_logo.jpg" alt="OBL logo" width="210" height="110">
+          <img src="https://biomed.drexel.edu/labs/obl/images/Ortho_Biomechanics_informal.png" alt="OBL logo" width="210" height="110">
       </td>
   </tr>
   </table>
@@ -43,7 +47,7 @@ table , th, td {
 }
 .div2 {
   width: 350px;
-  height: 110px;
+  height: 130px;
   border: 2px solid rgb(0, 0, 0);
 }
 .result {
@@ -67,6 +71,7 @@ table , th, td {
     <th>Rank</th>
     <th>Features</th>
     <th>Values</th>
+    <th>User Input</th>
     <th>Range</th>
   </tr>
   
@@ -74,6 +79,7 @@ table , th, td {
     <td>1</td>
     <td>Initial Cobb angle (°)</td>
     <td><input id="1" type="text" name="Cobb_Initial"  autocomplete="off" required="required"/></td>
+    <td> {{ InitialCobb }}</td>
     <td>[10.9 - 99.5]</td>
   </tr>
 
@@ -81,6 +87,7 @@ table , th, td {
     <td>2</td>
     <td>Flexibility (%)</td>
     <td><input id="2" type="text" name="Flexibility" autocomplete="off" required="required"/></td>
+    <td> {{ Flexibility }}</td>
     <td>[0.05 - 0.99]</td>
   </tr>
 
@@ -88,6 +95,7 @@ table , th, td {
     <td>3</td>
     <td>Lumbar lordosis angle (°)</td>
     <td><input id="3" type="text" name="Lordosis" autocomplete="off" required="required"/></td>
+    <td> {{ Lordosis }}</td>
     <td>[3.4 - 87.1]</td>
   </tr>
 
@@ -95,6 +103,7 @@ table , th, td {
     <td>4</td>
     <td>Thoracic kyphosis angle (°)</td>
     <td><input id="4" type="text" name="Kyphosis" autocomplete="off" required="required"/></td>
+    <td> {{ Kyphosis }}</td>
     <td>[0 - 51.3]</td>
   </tr>
 
@@ -102,6 +111,7 @@ table , th, td {
     <td>5</td>
     <td>Age at prediction (years)</td>
     <td><input id="5" type="text" name="Age_last" autocomplete="off" required="required"/></td>
+    <td> {{ AgePredict }}</td>
     <td>[10.4 - 18.6]</td>
   </tr>
 
@@ -120,6 +130,7 @@ table , th, td {
         <option value="10">10</option>
       </select>
     </td>
+    <td> {{ Levels }}</td>
     <td>Select from drop-down list</td>
   </tr>
 
@@ -139,17 +150,38 @@ table , th, td {
         <option value="5">5</option>
       </select>
     </td>
+    <td> {{ Risser }}</td>
     <td>Select from drop-down list</td>
   </tr>
 
+  <tr>
+    <td>8</td>
+    <td>Age at first visit (years)</td>
+    <td><input id="8" type="text" name="Age_first" autocomplete="off" required="required"/></td>
+    <td> {{ AgeFirst }}</td>
+    <td>[10 - 17.8]</td>
+  </tr>
  
+  <tr>
+    <td>9</td>
+    <td><label for="Gender">Gender</label></td>
+    <td>
+      <select name="Gender" id="9">
+        <option value="-">-Select-</option>
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+      </select>
+    </td>
+    <td> {{ Gender }}</td>
+    <td>Select from drop-down list</td>
+  </tr>
 
 
 
 </table>
     <br>
     <br>
-    <button type="button" onclick="f1();f2();f3();f4();f5();f6();f7();submitForm(event);" class="btn btn-primary btn-block btn-large">Predict</button>  
+    <button type="button" onclick="f1();f2();f3();f4();f5();f6();f7();f8();f9();submitForm(event);" class="btn btn-primary btn-block btn-large">Predict</button>  
     
     <!--<button type="button" style="background-color: green;color: aliceblue" onclick="f1();f2();f3();f4();f5();f0();reset()">Predict</button>-->
     <input type="reset" value="Reset" style="background-color: crimson;color: aliceblue"/>
@@ -160,6 +192,8 @@ table , th, td {
     <p id="p5"></p>
     <p id="p6"></p>
     <p id="p7"></p>
+    <p id="p8"></p>
+    <p id="p9"></p>
 
 <div id="error1" style="color: #fa0000"></div>
 <div id="error2" style="color: #fa0000"></div>
@@ -168,6 +202,8 @@ table , th, td {
 <div id="error5" style="color: #fa0000"></div>
 <div id="error6" style="color: #fa0000"></div>
 <div id="error7" style="color: #fa0000"></div>
+<div id="error8" style="color: #fa0000"></div>
+<div id="error9" style="color: #fa0000"></div>
 
 
 <script type="text/javascript">
@@ -179,6 +215,8 @@ var e4=0;
 var e5=0;
 var e6=0;
 var e7=0;
+var e8=0;
+var e9=0;
 
 function f1() {
   const message = document.getElementById("p1");
@@ -296,6 +334,37 @@ catch(err) {
   }
 }
 
+function f8() {
+  const message = document.getElementById("p8");
+  message.innerHTML = "";
+  let x = document.getElementById("8").value;
+  try { 
+    if(x == "")  throw "Age at first visit is empty";
+    if(isNaN(x)) throw "Age at first visit is not a number";
+    if(x < 10)  throw "Age at first visit is out of range";
+    if(x > 17.8)  throw "Age at first visit is out of range";
+    if(x >= 10 || x <= 17.8) throw " ";
+  }
+  catch(err) {
+    e8=1
+    document.getElementById("error8").innerHTML = "  " + err;
+  }
+}
+
+function f9() {
+  const message = document.getElementById("p9");
+  message.innerHTML = "";
+  let x = document.getElementById("9").value;
+  try { 
+    if(x == "-")  throw "Gender is required";
+    if(x != "-")  throw " ";
+}
+catch(err) {
+    e9=1
+    document.getElementById("error9").innerHTML = " " + err;
+  }
+}
+
 
 function submitForm(){
   var originalvalue = document.getElementById("p1").value;
@@ -306,11 +375,13 @@ function submitForm(){
   let x5 = document.getElementById("5").value;
   let x6 = document.getElementById("6").value;
   let x7 = document.getElementById("7").value;
+  let x8 = document.getElementById("8").value;
+  let x9 = document.getElementById("9").value;
    
-  if((e1 == 1 || e2 == 1 || e3 == 1 || e4 == 1 || e5 == 1 || e6 == 1 || e7 == 1) && ((x1<= 10.99 || x1>= 99.5) || (x2 <= 0.05 || x2 >= 0.99) || (x3 <= 3.4 || x3 >= 87.1) || (x4 <= 0 || x4 >= 51.3) || (x5 <= 10.4 || x5 >= 18.6) || (x6 == "-") || (x7 == "-")) )
+  if((e1 == 1 || e2 == 1 || e3 == 1 || e4 == 1 || e5 == 1 || e6 == 1 || e7 == 1 || e8 == 1 || e9 == 1) && ((x1<= 10.99 || x1>= 99.5) || (x2 <= 0.05 || x2 >= 0.99) || (x3 <= 3.4 || x3 >= 87.1) || (x4 <= 0 || x4 >= 51.3) || (x5 <= 10.4 || x5 >= 18.6) || (x6 == "-") || (x7 == "-") || (x8 <= 10 || x8 >= 17.8) || (x9 == "-")) )
   {
     event.preventDefault(); 
-    e1=0;e2=0;e3=0;e4=0;e5=0;e6=0;e7=0;
+    e1=0;e2=0;e3=0;e4=0;e5=0;e6=0;e7=0;e8=0;e9=0;
   }
   else
   {
@@ -326,6 +397,7 @@ function displayInput(){
   var x4 = document.getElementById("4").value;
   var x5 = document.getElementById("5").value;
   var x6 = document.getElementById("6").value;
+  var x7 = document.getElementById("7").value;
   var x7 = document.getElementById("7").value;
 
   message.innerHTML = "Input values";
@@ -371,12 +443,15 @@ function displayInput(){
     <tr>
       <td>Initial Cobb angle </td>
       <td>Cobb angle is the angle measured between the lines which are above the most tilted vertebrae superior to the apex and below the most tilted vertebrae inferior to the apex</td>
-      <th><img src="https://ausilah-test-1.s3.amazonaws.com/Initial_Cobb_Angle.jpg" alt="Initial_Cobb_Angle" width="200" height="200"></th>
+      <th><img src="https://biomed.drexel.edu/labs/obl/images/Initial_Cobb_Angle.jpg" alt="Initial_Cobb_Angle" width="200" height="200">
+        <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3654460/" target="_blank">Image Source
+        </a></p>
+      </th>
     </tr>
     <tr>
       <td>Flexibility</td>
       <td>The flexibility is calculated as the percent change in Cobb angle between the standing radiograph and the side bending radiograph</td>
-      <th><img src="https://ausilah-test-1.s3.amazonaws.com/Flexibility.jpg" alt="Flexibility" width="500" height="300"></th>
+      <th><img src="https://biomed.drexel.edu/labs/obl/images/Flexibility.jpg" alt="Flexibility" width="500" height="300"></th>
     </tr>
     <tr>
       <td>Lumbar lordosis and thoracic kyphosis angles</td>
@@ -384,7 +459,7 @@ function displayInput(){
        <p>Lordosis angle is the angle between the superior endplate of L1 and the inferior endplate of L5</p>
        <p>Kyphosis angle is the angle between the superior endplate of T2 and the inferior endplate of T12</p>
         </td>
-      <th><img src="https://ausilah-test-1.s3.amazonaws.com/Kyphosis_Lordosis.jpg" alt="Kyphosis_Lordosis"width="100" height="270"></th>
+      <th><img src="https://biomed.drexel.edu/labs/obl/images/Kyphosis_Lordosis.jpg" alt="Kyphosis_Lordosis"width="100" height="270"></th>
       <tr>
         <td>Age at prediction (years)</td>
         <td>Age of the patient at which the prediction is made </td>
@@ -394,7 +469,11 @@ function displayInput(){
     <tr>
       <td>Number of levels involved</td>
       <td>The number of vertebral levels involved in the major curve. In the figure on the right, seven levels are involved in the curve</td>
-      <th><img src="https://ausilah-test-1.s3.amazonaws.com/Initial_Cobb_Angle.jpg" alt="Num_Levels_Involved" width="200" height="200"></th>
+      <th><img src="https://biomed.drexel.edu/labs/obl/images/Initial_Cobb_Angle.jpg" alt="Num_Levels_Involved" width="200" height="200">
+        <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3654460/" target="_blank">Image Source
+        </a></p>
+      </th>
+      
     </tr>
     <tr>
       <td>Risser"+" stage at initial diagnosis</td>
@@ -411,11 +490,25 @@ function displayInput(){
         <p>Risser 4: Start of fusion</p>
         <p>Risser 5: complete fusion</p>
         <p>For further details, please refer to:</p> 
-        <p><a href="https://link.springer.com/article/10.1007/s00586-018-5821-8" target="_blank">Troy, Michael J., Patricia E. Miller, Nigel Price, Vish Talwalkar, Fabio Zaina, Sabrina Donzelli, Stefano Negrini, and M. Timothy Hresko. "The “Risser+” grade: a new grading system to classify skeletal maturity in idiopathic scoliosis." European Spine Journal 28, no. 3 (2019): 559-566.
+        <p><a href="https://link.springer.com/article/10.1007/s00586-018-5821-8" target="_blank">Reference
          </a></p>
         </td>
-      <th><img src="https://ausilah-test-1.s3.amazonaws.com/Risser.jpg" alt="Risser" width="600" height="350"></th>
+      <th><img src="https://biomed.drexel.edu/labs/obl/images/Risser.jpg" alt="Risser" width="600" height="350">
+        <p><a href="https://link.springer.com/article/10.1007/s00586-018-5821-8" target="_blank">Image Source
+        </a></p>
+      </th>
     </tr>
   </table>
+
+  xvalue= {{ xval }};
+  yvalue= {{ yval }};
+  {{ pred_angle1 }}
+  {{ pred_angle2 }}
+  {{ pred_angle3 }}
+  {{ age_arr }}
+  {{ div_placeholder }}
+  {{ div_placeholder1 }}
+
 </body>
+
 </html>
