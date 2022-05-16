@@ -404,26 +404,28 @@ function displayInput(){
   message.innerHTML = "Number of levels involved is " + x6;
   message.innerHTML = "Risser'+' stage at initial diagnosis is " + x7;
 }
-
-
-
-
-
-
-
 </script>
+
+
 <div class="div1" style="font-size:18px">
   {{ prediction_text }}
 </div>
-<div class="div2" style="font-size:18px">
-  {{ original_input }}
-</div>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
+{{ div_placeholder }}
 
+
+<p>This Random Forest model predicts curve progression and final Cobb angle in Adolescent Idiopathic Scoliosis (AIS) patients. 
+
+  <p>Preoperative radiographs from 193 AIS patients were retrospectively obtained from a single center. The average age of the patients was 12.7 ± 1.7 years (range 10-17.8 years) with an average initial major Cobb angle of 48.9 ± 13.9°. A Random Forest (RF) model was used to predict the final Cobb angle. This RF model was trained on data from 144 patients, and tested on data from 49 patients. The average expected prediction error for final Cobb angle was 4.6 ± 4.3°. </p>
+  
+  <p>Please consider using our RF model with retrospective data from your own center to predict final Cobb angle in AIS patents with progressive curves. We hope to encourage the use of such machine learning-based prediction models in clinical practice. We appreciate any feedback!</p>
+  <p>Note: The model’s performance on clinical data from other centers, or for patients with features out of the ranges specified in the table below may be unreliable and prone to higher prediction errors. </p>
+  
+  <p>If you use this model, please cite our paper:</p>
+  
 
 </fieldset>
 </form>
-
-
     <br>
    <h2>Features Description</h2>
   <br>
@@ -496,8 +498,8 @@ function displayInput(){
 
  
  
-  
-{{ div_placeholder }}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
+
 
 </body>
 

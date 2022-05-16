@@ -3,7 +3,7 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
-from plotly.offline import plot
+from plotly.offline import iplot
 import plotly.express as px 
 from plotly.graph_objs import Scatter
 import plotly.graph_objs as go
@@ -71,8 +71,10 @@ def predict():
   
     fig.add_trace(go.Scatter(x=np.array(age_last), y=np.array(final_predict), 
     mode='markers',marker={'color' : 'red'}, name='Current Prediction'))
-    fig.show()
- 
+    
+    #fig.write_image("fig1.png")
+    #fig.show()
+    my_plot=plotly.offline.plot(fig, include_plotlyjs=False, output_type='div') 
 
 # 'frames': [{'data': [{'x': [age_last], 'y': [final_predict]}]}]
    # my_plot_div = plot([Scatter(x=age_arr, y=(pred_angle1))], output_type='div', image_filename="Cobb angle predicition")
@@ -100,7 +102,7 @@ def predict():
         pred_angle2=pred_angle2,
         pred_angle3=pred_angle3,
         age_arr=age_arr,
-        #div_placeholder=Markup(my_fig)
+        div_placeholder=Markup(my_plot)
         #div_placeholder=Markup(my_plot_div)
     )
 
