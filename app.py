@@ -96,7 +96,7 @@ def predict():
         Risser=float_features[6],
         AgeFirst=float_features[7],
         Gender=float_features[8],
-        prediction_text = " The Final Cobb angle is {} degrees".format(prediction),  
+        prediction_text = " The Final predicted Cobb angle is {} degrees".format(prediction),  
         pred_angle1=pred_angle1,
         pred_angle2=pred_angle2,
         pred_angle3=pred_angle3,
