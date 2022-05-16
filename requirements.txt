@@ -5,3 +5,4 @@ xgboost
 sklearn
 numpy
 plotly
+matplotlib
