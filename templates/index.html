@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <meta charset="UTF-8">
 
 
@@ -44,11 +43,6 @@ table , th, td {
   height: 25px;
   border: 2px solid rgb(0, 0, 0);
   
-}
-.div2 {
-  width: 350px;
-  height: 130px;
-  border: 2px solid rgb(0, 0, 0);
 }
 .result {
     margin: auto;
@@ -227,9 +221,9 @@ function f1() {
     
     if(x == "") throw "Initial Cobb angle value is empty";
     if(isNaN(x))  throw "Initial Cobb angle value is not a number";
-    if(x < 10.99)  throw "Initial Cobb angle value is out of range";
+    if(x < 10.9)  throw "Initial Cobb angle value is out of range";
     if(x > 99.5)   throw "Initial Cobb angle value is out of range";
-    if( x>= 10.99 && x<= 99.5) throw " ";
+    if( x>= 10.9 && x<= 99.5) throw " ";
   }
   catch(err) {
     e1=1;
@@ -378,7 +372,7 @@ function submitForm(){
   let x8 = document.getElementById("8").value;
   let x9 = document.getElementById("9").value;
    
-  if((e1 == 1 || e2 == 1 || e3 == 1 || e4 == 1 || e5 == 1 || e6 == 1 || e7 == 1 || e8 == 1 || e9 == 1) && ((x1<= 10.99 || x1>= 99.5) || (x2 <= 0.05 || x2 >= 0.99) || (x3 <= 3.4 || x3 >= 87.1) || (x4 <= 0 || x4 >= 51.3) || (x5 <= 10.4 || x5 >= 18.6) || (x6 == "-") || (x7 == "-") || (x8 <= 10 || x8 >= 17.8) || (x9 == "-")) )
+  if((e1 == 1 || e2 == 1 || e3 == 1 || e4 == 1 || e5 == 1 || e6 == 1 || e7 == 1 || e8 == 1 || e9 ==1) && ((x1<= 10.8 || x1>= 99.51) || (x2 <= 0.049 || x2 >= 0.991) || (x3 <= 3.39 || x3 >= 87.11) || (x4 <= -0.001 || x4 >= 51.31) || (x5 <= 10.39 || x5 >= 18.61) || (x6 == "-") || (x7 == "-") || (x8 <= 9.9 || x8 >= 17.81) || (x9 == "-")) )
   {
     event.preventDefault(); 
     e1=0;e2=0;e3=0;e4=0;e5=0;e6=0;e7=0;e8=0;e9=0;
@@ -500,14 +494,10 @@ function displayInput(){
     </tr>
   </table>
 
-  xvalue= {{ xval }};
-  yvalue= {{ yval }};
-  {{ pred_angle1 }}
-  {{ pred_angle2 }}
-  {{ pred_angle3 }}
-  {{ age_arr }}
-  {{ div_placeholder }}
-  {{ div_placeholder1 }}
+ 
+ 
+  
+{{ div_placeholder }}
 
 </body>
 
