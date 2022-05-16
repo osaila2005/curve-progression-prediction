@@ -39,7 +39,7 @@ def predict():
     
     age_first = float_features[7]
     age_arr = np.arange(np.floor(age_first+1), 19)
-    age_arr = np.insert(age_arr,0,age_first)
+    #age_arr = np.insert(age_arr,0,age_first)
 
     angle = float_features[0]
     angle_arr = [angle -5, angle, angle+5]
@@ -58,11 +58,10 @@ def predict():
     pred_angle1 = pred_angle[0:len(age_arr)] #Cobb -5
     pred_angle2 = pred_angle[len(age_arr): 2*len(age_arr)] #Cobb
     pred_angle3 = pred_angle[2*len(age_arr):] #Cobb +5
-    #pred_angle1 = np.insert(pred_angle1,0,angle_arr[0])
-    #pred_angle2 = np.insert(pred_angle2,0,angle_arr[1])
-    #pred_angle3 = np.insert(pred_angle3,0,angle_arr[2])
-    print(age_arr)
-    print(pred_angle2)
+    pred_angle1 = np.insert(pred_angle1,0,angle_arr[0])
+    pred_angle2 = np.insert(pred_angle2,0,angle_arr[1])
+    pred_angle3 = np.insert(pred_angle3,0,angle_arr[2])
+    age_arr = np.insert(age_arr,0,age_first)
     layout = go.Layout(title = "Cobb Angle prediction from current age to 18 years", xaxis = {'title':'Age (years)'}, yaxis = {'title':'Cobb Angle (degrees)'})  
     fig = go.Figure(data =[go.Scatter(x = age_arr,
                                    y = np.round((pred_angle2),1),
