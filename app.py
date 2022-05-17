@@ -1,4 +1,5 @@
-from matplotlib.pyplot import title
+from turtle import width
+from matplotlib.pyplot import plot, title
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
@@ -11,7 +12,7 @@ import plotly.graph_objs as go
 from flask import Markup
 import json
 import plotly
-
+print(plotly.__version__)
 
 #Creat flask app
 app = Flask(__name__)
@@ -53,7 +54,8 @@ def predict():
             new_float_features[4] = a
             features_new = [np.array(new_float_features)]
             pred_angle.append(model.predict(features_new)[0])
-    print(type(pred_angle))
+    #print(type(pred_angle))
+    print(type(age_arr))
 
     pred_angle1 = pred_angle[0:len(age_arr)] #Cobb -5
     pred_angle2 = pred_angle[len(age_arr): 2*len(age_arr)] #Cobb
@@ -63,14 +65,38 @@ def predict():
     pred_angle3 = np.insert(pred_angle3,0,angle_arr[2])
     age_arr = np.insert(age_arr,0,age_first)
     layout = go.Layout(title = "Cobb Angle prediction from current age to 18 years", xaxis = {'title':'Age (years)'}, yaxis = {'title':'Cobb Angle (degrees)'})  
-    fig = go.Figure(data =[go.Scatter(x = age_arr,
-                                   y = np.round((pred_angle2),1),
-                                   mode ='lines+markers',
-                                   name ='Curve Progression Prediction')], layout = layout)
-  
+    fig = go.Figure(data =[go.Scatter(x = age_arr,y = np.round((pred_angle2),1),
+                        mode ='lines+markers', marker={'color' : 'blue', 'size' : 10,'symbol' : 'square'},
+                        name ='Curve Progression Prediction')], layout = layout)
+   # fig=go.Figure()
+    #fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle1),1)),line = dict(color='royalblue', width=3) , name='Cobb Angle -5')
+    """
+    fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle1),1), 
+    mode='lines+markers',marker={'color' : 'violet', 'size' : 10,'symbol' : 'circle'}, 
+    line={'dash' : 'dash'},name='Cobb Angle -5'))
+    fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle3),1),
+    line={'dash' : 'dot'}, 
+    mode='lines+markers',marker={'color' : 'lightgreen','size' : 10,'symbol' : 'triangle-up'}, name='Cobb Angle +5'))
+    """
+    fig.add_trace(go.Scatter(
+        x = np.concatenate((age_arr, age_arr[::-1]),axis=None),
+        y = np.concatenate((pred_angle1,  pred_angle3[::-1]),axis=None),
+        fill='toself',
+        fillcolor='rgba(0,0,255,0.2)',
+        line_color='rgba(255,255,255,0)',
+        showlegend=True,
+        name='Confidence Interval',
+    ))
     fig.add_trace(go.Scatter(x=np.array(age_last), y=np.array(final_predict), 
-    mode='markers',marker={'color' : 'red'}, name='Current Prediction'))
+    mode='markers',marker={'color' : 'red','size' : 15,'symbol' : 'star'},  text= 'Current predict', textposition = 'bottom right' ,name='Current Prediction'))
+
+    fig.add_trace(go.Scatter(x=np.array(age_first), y=np.array(angle), 
+    mode='markers',marker={'color' : 'green','size' : 15,'symbol' : 'star'},  name='Current Cobb Angle'))
     
+    fig.update_layout(font = {'size' : 18})
+    #fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle1),1)),line = dict(color='firebrick', width=3, dash='dash') , name='Cobb Angle -5')
+   # fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle3),1)),line = dict(color='firebrick', width=3, dash='dot') , name='Cobb Angle +5')
+
     #fig.write_image("fig1.png")
     #fig.show()
     my_plot=plotly.offline.plot(fig, include_plotlyjs=False, output_type='div') 
