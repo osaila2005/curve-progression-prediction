@@ -1,4 +1,3 @@
-from turtle import width
 from matplotlib.pyplot import plot, title
 import numpy as np
 from flask import Flask, request, jsonify, render_template
