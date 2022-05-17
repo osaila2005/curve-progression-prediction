@@ -3,16 +3,16 @@ from matplotlib.pyplot import plot, title
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
-import pandas as pd
+#import pandas as pd
 from plotly.offline import iplot
-import plotly.express as px 
+#import plotly.express as px 
 from plotly.graph_objs import Scatter
 import plotly.graph_objs as go
 
 from flask import Markup
-import json
+#import json
 import plotly
-print(plotly.__version__)
+#print(plotly.__version__)
 
 #Creat flask app
 app = Flask(__name__)
