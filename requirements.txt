@@ -6,3 +6,4 @@ sklearn
 numpy
 plotly
 matplotlib
+python3-tk
