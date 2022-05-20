@@ -103,7 +103,7 @@ table , th, td {
 
   <tr>
     <td>5</td>
-    <td>Age at prediction (years)</td>
+    <td>At what age would you like to predict Cobb angle (years)</td>
     <td><input id="5" type="text" name="Age_last" autocomplete="off" required="required"/></td>
     <td> {{ AgePredict }}</td>
     <td>[10.4 - 18.6]</td>
@@ -111,7 +111,7 @@ table , th, td {
 
   <tr>
     <td>6</td>
-    <td><label for="Num_Levels_Involved">Number of levels involved</label></td>
+    <td><label for="Num_Levels_Involved">Number of vetebrae in the largest spinal curve</label></td>
     <td>
       <select name="Num_Levels_Involved" id="6">
         <option value="-">-Select-</option>
@@ -150,7 +150,7 @@ table , th, td {
 
   <tr>
     <td> </td>
-    <td>Age at first visit (years)</td>
+    <td>Current age (years)</td>
     <td><input id="8" type="text" name="Age_first" autocomplete="off" required="required"/></td>
     <td> {{ AgeFirst }}</td>
     <td>[10 - 17.8]</td>
@@ -169,6 +169,7 @@ table , th, td {
     <td> {{ Gender }}</td>
     <td>Select from drop-down list</td>
   </tr>
+ 
 
 
 
@@ -412,6 +413,7 @@ function displayInput(){
 </div>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
 {{ div_placeholder }}
+{{ div_placeholder2 }}
 
 
 <p>This Random Forest model predicts curve progression and final Cobb angle in Adolescent Idiopathic Scoliosis (AIS) patients. 

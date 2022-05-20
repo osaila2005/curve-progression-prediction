@@ -63,6 +63,18 @@ def predict():
     pred_angle2 = np.insert(pred_angle2,0,angle_arr[1])
     pred_angle3 = np.insert(pred_angle3,0,angle_arr[2])
     age_arr = np.insert(age_arr,0,age_first)
+    
+    plus_one_STD=np.full(np.shape(pred_angle2),4.3)
+    minus_one_STD=np.full(np.shape(pred_angle2),-4.3)
+    plus_two_STD=np.full(np.shape(pred_angle2),8.6)
+    minus_two_STD=np.full(np.shape(pred_angle2),-8.6)
+    
+    pred_angle2_plus_one_STD=np.add(pred_angle2,plus_one_STD)
+    pred_angle2_minus_one_STD=np.add(pred_angle2,minus_one_STD)
+    pred_angle2_plus_two_STD=np.add(pred_angle2,plus_two_STD)
+    pred_angle2_minus_two_STD=np.add(pred_angle2,minus_two_STD)
+    
+    #fig 1 
     layout = go.Layout(title = "Cobb Angle prediction from current age to 18 years", xaxis = {'title':'Age (years)'}, yaxis = {'title':'Cobb Angle (degrees)'})  
     fig = go.Figure(data =[go.Scatter(x = age_arr,y = np.round((pred_angle2),1),
                         mode ='lines+markers', marker={'color' : 'blue', 'size' : 10,'symbol' : 'square'},
@@ -79,25 +91,30 @@ def predict():
     """
     fig.add_trace(go.Scatter(
         x = np.concatenate((age_arr, age_arr[::-1]),axis=None),
-        y = np.concatenate((pred_angle1,  pred_angle3[::-1]),axis=None),
+        #y = np.concatenate((pred_angle1,  pred_angle3[::-1]),axis=None),
+        y = np.concatenate((pred_angle2_minus_one_STD,  pred_angle2_plus_one_STD[::-1]),axis=None),
         fill='toself',
         fillcolor='rgba(0,0,255,0.2)',
         line_color='rgba(255,255,255,0)',
         showlegend=True,
-        name='Confidence Interval',
+        name='68% Confidence Interval',
+    ))
+    fig.add_trace(go.Scatter(
+        x = np.concatenate((age_arr, age_arr[::-1]),axis=None),
+        #y = np.concatenate((pred_angle1,  pred_angle3[::-1]),axis=None),
+        y = np.concatenate((pred_angle2_minus_two_STD,  pred_angle2_plus_two_STD[::-1]),axis=None),
+        fill='toself',
+        fillcolor='rgba(255,0,0,0.2)',
+        line_color='rgba(255,255,255,0)',
+        showlegend=True,
+        name='95% Confidence Interval',
     ))
     fig.add_trace(go.Scatter(x=np.array(age_last), y=np.array(final_predict), 
     mode='markers',marker={'color' : 'red','size' : 15,'symbol' : 'star'},  text= 'Current predict', textposition = 'bottom right' ,name='Current Prediction'))
 
     fig.add_trace(go.Scatter(x=np.array(age_first), y=np.array(angle), 
     mode='markers',marker={'color' : 'green','size' : 15,'symbol' : 'star'},  name='Current Cobb Angle'))
-    
     fig.update_layout(font = {'size' : 18})
-    #fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle1),1)),line = dict(color='firebrick', width=3, dash='dash') , name='Cobb Angle -5')
-   # fig.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle3),1)),line = dict(color='firebrick', width=3, dash='dot') , name='Cobb Angle +5')
-
-    #fig.write_image("fig1.png")
-    #fig.show()
     my_plot=plotly.offline.plot(fig, include_plotlyjs=False, output_type='div') 
 
 # 'frames': [{'data': [{'x': [age_last], 'y': [final_predict]}]}]
@@ -109,8 +126,25 @@ def predict():
     #my_plot_div.add_scatter(x=age_arr, y=(pred_angle2))
    #my_plot_div1 = plot([Scatter(x=age_arr, y=(pred_angle2))], output_type='div')    
 
+#fig2 start ------------------------------------------------------------
+    layout2 = go.Layout(title = "Cobb Angle prediction from current age to 18 years with initial Cobb angle measurment error of +/-5 degree", xaxis = {'title':'Age (years)'}, yaxis = {'title':'Cobb Angle (degrees)'})  
+    fig2 = go.Figure(data =[go.Scatter(x = age_arr,y = np.round((pred_angle2),1),
+                        mode ='lines+markers', marker={'color' : 'blue', 'size' : 10,'symbol' : 'square'},
+                        name ='Curve Progression Prediction')], layout = layout2)
+    fig2.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle1),1), 
+    mode='lines',marker={'color' : 'violet', 'size' : 10}, 
+    line={'dash' : 'dash'},name='Cobb Angle -5'))
+    fig2.add_trace(go.Scatter(x=age_arr, y=np.round((pred_angle3),1), 
+    mode='lines',marker={'color' : 'violet', 'size' : 10}, 
+    line={'dash' : 'dash'},name='Cobb Angle +5'))
+    fig2.add_trace(go.Scatter(x=np.array(age_last), y=np.array(final_predict), 
+    mode='markers',marker={'color' : 'red','size' : 15,'symbol' : 'star'},  text= 'Current predict', textposition = 'bottom right' ,name='Current Prediction'))
+    fig2.add_trace(go.Scatter(x=np.array(age_first), y=np.array(angle), 
+    mode='markers',marker={'color' : 'green','size' : 15,'symbol' : 'star'},  name='Current Cobb Angle'))
+    fig2.update_layout(font = {'size' : 18})
+    my_plot2=plotly.offline.plot(fig2, include_plotlyjs=False, output_type='div')  
 
-
+#fig2 end ----------------------------------------------------------------------
     return render_template("index.html", 
         InitialCobb=float_features[0],
         Flexibility=float_features[1],
@@ -126,9 +160,9 @@ def predict():
         pred_angle2=pred_angle2,
         pred_angle3=pred_angle3,
         age_arr=age_arr,
-        div_placeholder=Markup(my_plot)
-        #div_placeholder=Markup(my_plot_div)
-    )
+        div_placeholder=Markup(my_plot),
+        div_placeholder2=Markup(my_plot2)
+        )
 
         
 
