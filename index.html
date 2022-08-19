@@ -93,7 +93,7 @@ table , th, td {
     <td>Flexibility (%)</td>
     <td><input id="2" type="text" name="Flexibility" autocomplete="off" required="required"/></td>
     <td> {{ Flexibility }}</td>
-    <td>[.37 - .76]</td>
+    <td>[0.37 - 0.76]</td>
   </tr>
 
   <tr>
@@ -246,8 +246,8 @@ function f2() {
   try { 
     if(x == "")  throw "Flexibility (%) is empty";
     if(isNaN(x)) throw "Flexibility (%) is not a number";
-    if(x < 37.7)  throw "Flexibility (%) is out of range";
-    if(x > 76.3)  throw "Flexibility (%) is out of range";
+    if(x < 0.37)  throw "Flexibility (%) is out of range";
+    if(x > 0.76)  throw "Flexibility (%) is out of range";
     if(x >= .37 || x <= .76) throw " ";
   }
   catch(err) {
