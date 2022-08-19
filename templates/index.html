@@ -85,7 +85,7 @@ table , th, td {
     <td>Initial Cobb angle (°)</td>
     <td><input id="1" type="text" name="Cobb_Initial"  autocomplete="off" required="required"/></td>
     <td> {{ InitialCobb }}</td>
-    <td>[10.9 - 99.5]</td>
+    <td>[30 - 62.8]</td>
   </tr>
 
   <tr>
@@ -93,7 +93,7 @@ table , th, td {
     <td>Flexibility (%)</td>
     <td><input id="2" type="text" name="Flexibility" autocomplete="off" required="required"/></td>
     <td> {{ Flexibility }}</td>
-    <td>[0.05 - 0.99]</td>
+    <td>[0.37 - 0.76]</td>
   </tr>
 
   <tr>
@@ -101,7 +101,7 @@ table , th, td {
     <td>Lumbar lordosis angle (°)</td>
     <td><input id="3" type="text" name="Lordosis" autocomplete="off" required="required"/></td>
     <td> {{ Lordosis }}</td>
-    <td>[3.4 - 87.1]</td>
+    <td>[41.6 - 65.6]</td>
   </tr>
 
   <tr>
@@ -109,7 +109,7 @@ table , th, td {
     <td>Thoracic kyphosis angle (°)</td>
     <td><input id="4" type="text" name="Kyphosis" autocomplete="off" required="required"/></td>
     <td> {{ Kyphosis }}</td>
-    <td>[0 - 51.3]</td>
+    <td>[13.3 - 35.1]</td>
   </tr>
 
   <tr>
@@ -117,7 +117,7 @@ table , th, td {
     <td>At what age would you like to predict Cobb angle (years)</td>
     <td><input id="5" type="text" name="Age_last" autocomplete="off" required="required"/></td>
     <td> {{ AgePredict }}</td>
-    <td>[10.4 - 18.6]</td>
+    <td>[12 - 15.2]</td>
   </tr>
 
   <tr>
@@ -147,12 +147,12 @@ table , th, td {
         <option value="-">-Select-</option>
         <option value="-2">Open triradiate cartilage (0-)</option>
         <option value="-1">Close triradiate cartilage (0+)</option>
-        <option value="1">1</option>
+        <!-- <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="0.75">3/4</option>
         <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="5">5</option>-->
       </select>
     </td>
     <td> {{ Risser }}</td>
@@ -164,7 +164,7 @@ table , th, td {
     <td>Current age (years)</td>
     <td><input id="8" type="text" name="Age_first" autocomplete="off" required="required"/></td>
     <td> {{ AgeFirst }}</td>
-    <td>[10 - 17.8]</td>
+    <td>[11 - 14.4]</td>
   </tr>
  
   <tr>
@@ -181,9 +181,6 @@ table , th, td {
     <td>Select from drop-down list</td>
   </tr>
  
-
-
-
 </table>
     <br>
     <br>
@@ -233,9 +230,9 @@ function f1() {
     
     if(x == "") throw "Initial Cobb angle value is empty";
     if(isNaN(x))  throw "Initial Cobb angle value is not a number";
-    if(x < 10.9)  throw "Initial Cobb angle value is out of range";
-    if(x > 99.5)   throw "Initial Cobb angle value is out of range";
-    if( x>= 10.9 && x<= 99.5) throw " ";
+    if(x < 30)  throw "Initial Cobb angle value is out of range";
+    if(x > 62.8)   throw "Initial Cobb angle value is out of range";
+    if( x>= 30 && x<= 62.8) throw " ";
   }
   catch(err) {
     e1=1;
@@ -249,9 +246,9 @@ function f2() {
   try { 
     if(x == "")  throw "Flexibility (%) is empty";
     if(isNaN(x)) throw "Flexibility (%) is not a number";
-    if(x < 0.05)  throw "Flexibility (%) is out of range";
-    if(x > 0.99)  throw "Flexibility (%) is out of range";
-    if(x >= 0.05 || x <= 0.99) throw " ";
+    if(x < 37.7)  throw "Flexibility (%) is out of range";
+    if(x > 76.3)  throw "Flexibility (%) is out of range";
+    if(x >= .37 || x <= .76) throw " ";
   }
   catch(err) {
     e2=1
@@ -266,9 +263,9 @@ function f3() {
   try { 
     if(x == "")  throw "Lumbar lordosis angle (L1-L5) is empty";
     if(isNaN(x)) throw "Lumbar lordosis angle (L1-L5) is not a number";
-    if(x < 3.4)  throw "Lumbar lordosis angle (L1-L5) is out of range";
-    if(x > 87.1)   throw "Lumbar lordosis angle (L1-L5) is out of range";
-    if(x >= 3.4 || x <= 87.1) throw " ";
+    if(x < 41.6)  throw "Lumbar lordosis angle (L1-L5) is out of range";
+    if(x > 65.6)   throw "Lumbar lordosis angle (L1-L5) is out of range";
+    if(x >= 41.6 || x <= 65.6) throw " ";
   }
   catch(err) {
     e3=1
@@ -284,9 +281,9 @@ function f4() {
     if(x == "")  throw "Thoracic kyphosis angle (T2-T12) is empty";
     if(isNaN(x)) throw "Thoracic kyphosis angle (T2-T12) is not a number";
     x = Number(x);
-    if(x < 0)  throw "Thoracic kyphosis angle (T2-T12) is out of range";
-    if(x > 51.3)   throw "Thoracic kyphosis angle (T2-T12) is out of range";
-    if(x >= 0 || x <= 51.3) throw " ";
+    if(x < 13.3)  throw "Thoracic kyphosis angle (T2-T12) is out of range";
+    if(x > 35.1)   throw "Thoracic kyphosis angle (T2-T12) is out of range";
+    if(x >= 13.3 || x <= 35.1) throw " ";
   }
   catch(err) {
     e4=1
@@ -302,9 +299,9 @@ function f5() {
     if(x == "")  throw "Age at predicition (years) is empty";
     if(isNaN(x)) throw "Age at predicition (years) is not a number";
     x = Number(x);
-    if(x < 10.4)  throw "Age at predicition (years) is out of range";
-    if(x > 18.6)   throw "Age at predicition (years) is out of range";
-    if(x >= 10.4 || x <= 18.6) throw " ";
+    if(x < 12)  throw "Age at predicition (years) is out of range";
+    if(x > 15.2)   throw "Age at predicition (years) is out of range";
+    if(x >= 12 || x <= 15.2) throw " ";
   }
   catch(err) {
     e5=1
@@ -347,9 +344,9 @@ function f8() {
   try { 
     if(x == "")  throw "Age at first visit is empty";
     if(isNaN(x)) throw "Age at first visit is not a number";
-    if(x < 10)  throw "Age at first visit is out of range";
-    if(x > 17.8)  throw "Age at first visit is out of range";
-    if(x >= 10 || x <= 17.8) throw " ";
+    if(x < 11)  throw "Age at first visit is out of range";
+    if(x > 14.4)  throw "Age at first visit is out of range";
+    if(x >= 11 || x <= 14.4) throw " ";
   }
   catch(err) {
     e8=1
@@ -384,7 +381,7 @@ function submitForm(){
   let x8 = document.getElementById("8").value;
   let x9 = document.getElementById("9").value;
    
-  if((e1 == 1 || e2 == 1 || e3 == 1 || e4 == 1 || e5 == 1 || e6 == 1 || e7 == 1 || e8 == 1 || e9 ==1) && ((x1<= 10.8 || x1>= 99.51) || (x2 <= 0.049 || x2 >= 0.991) || (x3 <= 3.39 || x3 >= 87.11) || (x4 <= -0.001 || x4 >= 51.31) || (x5 <= 10.39 || x5 >= 18.61) || (x6 == "-") || (x7 == "-") || (x8 <= 9.9 || x8 >= 17.81) || (x9 == "-")) )
+  if((e1 == 1 || e2 == 1 || e3 == 1 || e4 == 1 || e5 == 1 || e6 == 1 || e7 == 1 || e8 == 1 || e9 ==1) && ((x1<= 34.9 || x1>= 62.81) || (x2 <= 0.369 || x2 >= 0.761) || (x3 <= 41.5 || x3 >= 65.61) || (x4 <= 13.2 || x4 >= 35.2) || (x5 <= 11.99 || x5 >= 15.21) || (x6 == "-") || (x7 == "-") || (x8 <= 10.9 || x8 >= 14.41) || (x9 == "-")) )
   {
     event.preventDefault(); 
     e1=0;e2=0;e3=0;e4=0;e5=0;e6=0;e7=0;e8=0;e9=0;
@@ -434,7 +431,7 @@ function displayInput(){
   <p>Please consider using our RF model with retrospective data from your own center to predict final Cobb angle in AIS patents with progressive curves. We hope to encourage the use of such machine learning-based prediction models in clinical practice. We appreciate any feedback!</p>
   <p>Note: The model’s performance on clinical data from other centers, or for patients with features out of the ranges specified in the table above may be unreliable and prone to higher prediction errors. </p>
   
-  <p>If you use this model, please cite our paper:</p>
+  <p>If you use this model, please cite our paper: Alfraihat A, Samdani AF, Balasubramanian S (2022) Predicting curve progression for adolescent idiopathic scoliosis using random forest model. PLoS ONE 17(8): e0273002. https://doi.org/10.1371/journal.pone.0273002</p>
   
 
 </fieldset>
